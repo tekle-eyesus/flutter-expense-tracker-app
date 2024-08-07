@@ -64,7 +64,8 @@ class CartModel extends ChangeNotifier {
   //list of added cards
   List cartList = [];
 
-//getter
+//getter to ruturn lists
+
   get shopItems => _shopItemsList;
   get cartItem => cartList;
 
@@ -86,6 +87,7 @@ class CartModel extends ChangeNotifier {
     return totalPrice.toStringAsFixed(2);
   }
 
+//to calculate the total number of items in the cart
   String calculateTotalItems() {
     int count = 0;
     for (int i = 0; i < cartList.length; i++) {
