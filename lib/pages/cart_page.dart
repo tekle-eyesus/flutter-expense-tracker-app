@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/models/cart_model.dart';
+import 'package:shopping_app/pages/paymentScreen.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -92,7 +93,10 @@ class CartPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 50),
                           child: MaterialButton(
-                            onPressed: () => print("Transaction....."),
+                            onPressed: () => Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return PaymentScreen();
+                            })),
                             child: Icon(Icons.paypal, color: Colors.white),
                             minWidth: 10,
                           ),
