@@ -63,7 +63,8 @@ class CartModel extends ChangeNotifier {
 
   //list of added cards
   List cartList = [];
-
+  //list to reset the cart list
+  List emptyList = [];
 //getter to ruturn lists
 
   get shopItems => _shopItemsList;
@@ -95,5 +96,18 @@ class CartModel extends ChangeNotifier {
     }
 
     return count.toString();
+  }
+
+  String getShoppingDate() {
+    String date = DateTime.now().toString();
+    return date;
+  }
+
+  String clearCart() {
+    for (int i = 0; i < cartList.length; i++) {
+      cartList.removeAt(i);
+    }
+    notifyListeners();
+    return "deleted";
   }
 }
