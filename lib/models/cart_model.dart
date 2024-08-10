@@ -103,11 +103,15 @@ class CartModel extends ChangeNotifier {
     return date;
   }
 
-  String clearCart() {
-    for (int i = 0; i < cartList.length; i++) {
-      cartList.removeAt(i);
+  void clearCart() {
+    cartList.clear();
+  }
+
+  bool isEmpty() {
+    if (cartList.length == 0) {
+      return true;
+    } else {
+      return false;
     }
-    notifyListeners();
-    return "deleted";
   }
 }

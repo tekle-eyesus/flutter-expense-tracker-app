@@ -93,10 +93,34 @@ class CartPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 50),
                           child: MaterialButton(
-                            onPressed: () => Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return PaymentScreen();
-                            })),
+                            onPressed: () => (!value.isEmpty())
+                                ? Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                    return PaymentScreen();
+                                  }))
+                                : showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  // Navigator.push(context,
+                                                  //     MaterialPageRoute(
+                                                  //         builder: (context) {
+                                                  //  value.clearCart();
+                                                  //   return HomePage();
+                                                  // }));
+                                                  Navigator.of(context)
+                                                      .pop(); // to cancel the dialog box
+                                                },
+                                                child: const Text("close"))
+                                          ],
+                                          title: const Text("Shopping App"),
+                                          contentPadding:
+                                              const EdgeInsets.all(20),
+                                          content:
+                                              const Text("Your Cart Is Empty!"),
+                                        )),
                             child: Icon(Icons.paypal, color: Colors.white),
                             minWidth: 10,
                           ),

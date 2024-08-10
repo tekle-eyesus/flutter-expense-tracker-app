@@ -39,10 +39,17 @@ class HomePage extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10),
-            child: Image.asset(
-              "lib/images/user.png",
-              height: 40,
-              width: 40,
+            child: Tooltip(
+              decoration: BoxDecoration(
+                color: Colors.greenAccent,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              message: "Profile Image",
+              child: Image.asset(
+                "lib/images/user.png",
+                height: 40,
+                width: 40,
+              ),
             ),
           )
         ],

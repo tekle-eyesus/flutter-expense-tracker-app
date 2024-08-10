@@ -48,7 +48,7 @@ class ConfirmScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) {
-                    print(value.clearCart());
+                    value.clearCart();
                     return HomePage();
                   })),
                   child: Container(
@@ -69,7 +69,38 @@ class ConfirmScreen extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                )
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          value.clearCart();
+                                          return HomePage();
+                                        }));
+                                        Navigator.of(context)
+                                            .pop(); // to cancel the dialog box
+                                      },
+                                      child: const Text("HOME"))
+                                ],
+                                title: const Text("Shopping App"),
+                                contentPadding: const EdgeInsets.all(20),
+                                content: const Text("Payment Succssfull!! "),
+                              ));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Text(
+                        "Finished!",
+                        style: TextStyle(),
+                      ),
+                    ))
               ],
             );
           },
