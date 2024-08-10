@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/components/shop_item_title.dart';
+import 'package:shopping_app/pages/about_page.dart';
 import 'package:shopping_app/pages/cart_page.dart';
+import 'package:shopping_app/pages/intro_page.dart';
+import 'package:shopping_app/pages/setting_page.dart';
 import './../models/cart_model.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,11 +25,33 @@ class HomePage extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 67, 16, 12),
       ),
       appBar: AppBar(
-        leading: Icon(
-          Icons.menu_rounded,
-          color: Colors.red,
-          size: 30,
-        ),
+        leading: PopupMenuButton(
+            color: Colors.amber,
+            iconColor: Colors.white,
+            icon: Icon(Icons.menu_open_rounded),
+            itemBuilder: (context) => [
+                  PopupMenuItem(
+                    child: Text("About"),
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return AboutScreen();
+                    })),
+                  ),
+                  //to add popup menu items like about, setting and exit/quit
+                  PopupMenuItem(
+                      child: Text("setting"),
+                      onTap: () => Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return SettingScreen();
+                          }))),
+                  PopupMenuItem(
+                    child: Text("Exit"),
+                    onTap: () => Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) {
+                      return IntroPage();
+                    })),
+                  ),
+                ]),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 67, 16, 12),
         title: Text(
