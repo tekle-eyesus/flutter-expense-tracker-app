@@ -1,9 +1,7 @@
-// import 'package:english_words/english_words.dart';
+import 'package:expense_tracker/data/expense_data.dart';
+import 'package:expense_tracker/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_app/pages/intro_page.dart';
-import './models/cart_model.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,11 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CartModel(),
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: IntroPage(),
-      ),
-    );
+        create: (context) => ExpenseData(),
+        builder: (context, child) => const MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: HomeScreen(),
+            ));
   }
 }

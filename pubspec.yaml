@@ -1,4 +1,4 @@
-name: shopping_app
+name: expense_tracker
 description: manage your shopping in by adding to cart.
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
@@ -24,4 +24,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets: [lib/images/]
+  # assets: [lib/images/]
